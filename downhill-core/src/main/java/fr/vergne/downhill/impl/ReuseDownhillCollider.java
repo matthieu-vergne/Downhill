@@ -48,7 +48,7 @@ public class ReuseDownhillCollider<Ball> implements DownhillCollider<Ball> {
 
 	@Override
 	public Collection<Ball> rolls(Collection<Ball> balls,
-			Collider<Ball> collider) {
+			Collider<Ball>... colliders) {
 		Collection<Ball> oldBalls = new HashSet<Ball>(balls);
 		Collection<Ball> newBalls = oldBalls;
 		Collection<Ball> consumed = new HashSet<Ball>();
@@ -56,17 +56,19 @@ public class ReuseDownhillCollider<Ball> implements DownhillCollider<Ball> {
 			Collection<Ball> merged = new LinkedList<Ball>();
 			for (Ball b1 : oldBalls) {
 				for (Ball b2 : newBalls) {
-					if (collider.areColliding(b1, b2)) {
-						Ball collided = collider.collide(b1, b2);
-						if (collided.equals(b1) || collided.equals(b2)) {
-							// already made, do not consider it
+					for (Collider<Ball> collider : colliders) {
+						if (collider.areColliding(b1, b2)) {
+							Ball collided = collider.collide(b1, b2);
+							if (collided.equals(b1) || collided.equals(b2)) {
+								// already made, do not consider it
+							} else {
+								consumed.add(b1);
+								consumed.add(b2);
+								merged.add(collided);
+							}
 						} else {
-							consumed.add(b1);
-							consumed.add(b2);
-							merged.add(collided);
+							// not able to merge them
 						}
-					} else {
-						// not able to merge them
 					}
 				}
 			}

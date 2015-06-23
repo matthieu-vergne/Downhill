@@ -98,9 +98,10 @@ public abstract class DownhillColliderTest {
 
 			// check correct result
 			DownhillCollider<Range> downhill = buildDownhillCollider();
+			@SuppressWarnings("unchecked")
 			Collection<Range> merged = downhill.rolls(balls, collider);
-			assertTrue(balls + " > " + merged, merged
-					.contains(new Range(0, 40)));
+			assertTrue(balls + " > " + merged,
+					merged.contains(new Range(0, 40)));
 		}
 	}
 

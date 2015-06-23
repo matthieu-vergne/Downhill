@@ -27,12 +27,12 @@ public interface DownhillCollider<Ball> {
 	 * 
 	 * @param balls
 	 *            the balls to roll downhill
-	 * @param collider
-	 *            the collision rules
+	 * @param colliders
+	 *            the set of collision rules
 	 * @return the set of balls remaining when no merging possibility remains
 	 */
 	public Collection<Ball> rolls(Collection<Ball> balls,
-			Collider<Ball> collider);
+			Collider<Ball>... colliders);
 
 	/**
 	 * A {@link Collider} describe how collision are managed.
