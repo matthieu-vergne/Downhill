@@ -1,6 +1,7 @@
 package fr.vergne.downhill.impl;
 
 /**
+ * Old version of the {@link ReductionDownhillCollider}.
  * 
  * @author Matthieu Vergne <matthieu.vergne@gmail.com>
  * 

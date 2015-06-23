@@ -7,10 +7,12 @@ import java.util.LinkedList;
 import fr.vergne.downhill.DownhillCollider;
 
 /**
- * This {@link DownhillCollider} aims at using <b>all</b> the possible
- * {@link Ball}s to create new ones. Thus, each {@link Ball} is re-used as long
- * as it allows to generate new ones. At the end of the colliding, the original
- * {@link Ball}s are returned with the new ones, including the intermediaries.
+ * The {@link ReuseDownhillCollider} aims at considering all the possible
+ * combinations of {@link Ball}s to create new ones. Thus, each {@link Ball} is
+ * re-used at each iteration, and the process stops when no new {@link Ball} can
+ * be created. At the end of the colliding, the original {@link Ball}s are
+ * returned with the new ones (including the intermediaries) unless the opposite
+ * is asked.
  * 
  * @author Matthieu Vergne <matthieu.vergne@gmail.com>
  * 
