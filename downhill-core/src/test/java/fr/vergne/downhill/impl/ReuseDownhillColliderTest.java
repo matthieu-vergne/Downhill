@@ -7,6 +7,6 @@ public class ReuseDownhillColliderTest extends DownhillColliderTest {
 
 	@Override
 	protected <Ball> DownhillCollider<Ball> buildDownhillCollider() {
-		return new ReuseDownhillCollider<Ball>();
+		return new ReuseDownhillCollider<Ball>(false);
 	}
 }
